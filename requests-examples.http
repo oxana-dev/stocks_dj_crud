@@ -1,0 +1,89 @@
+# API-requests examples
+
+@baseUrl = http://localhost:8000/api/v1
+
+# Create a product
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "Tomatoes",
+  "description": "The best tomatoes in the market"
+}
+
+###
+
+# Retrieve a product
+GET {{baseUrl}}/products/
+Content-Type: application/json
+
+###
+
+# Update a product
+PATCH {{baseUrl}}/products/1/
+Content-Type: application/json
+
+{
+  "description": "The juiciest and most flavorful tomatoes."
+}
+
+###
+
+# Delete a product
+DELETE {{baseUrl}}/products/1/
+Content-Type: application/json
+
+###
+
+# Search for products by name and description
+GET {{baseUrl}}/products/?search=помидор
+Content-Type: application/json
+
+###
+
+# Create a warehouse
+POST {{baseUrl}}/stocks/
+Content-Type: application/json
+
+{
+  "address": "my address",
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 3,
+      "quantity": 100,
+      "price": 180
+    }
+  ]
+}
+
+###
+
+# Update stock records
+PATCH {{baseUrl}}/stocks/4/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 100,
+      "price": 130.80
+    },
+    {
+      "product": 3,
+      "quantity": 243,
+      "price": 145
+    }
+  ]
+}
+
+###
+
+# Search for warehouses that have a specific product
+GET {{baseUrl}}/stocks/?products=2
+Content-Type: application/json
